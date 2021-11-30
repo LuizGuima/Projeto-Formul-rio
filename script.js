@@ -32,7 +32,7 @@ function validateEmail() {
         email.nextElementSibling.innerText = 'Campo obrigatorio*'
         email.classList.remove('verify')
     }
-    else if (email.value.indexOf('@') == -1 || email.value.indexOf('.') == -1) {
+    else if (email.value.indexOf('@') == -1 || email.value.indexOf('.') == -1 || (email.value.indexOf('.') - email.value.indexOf('@') == 1)) {
         email.style.border = '2px solid red';
         email.nextElementSibling.innerText = 'Use um email válido*'
         email.classList.remove('verify')
@@ -67,11 +67,11 @@ function validatePass() {
 }
 
 function validetAll() {
-   
-   let emailVerify = user.classList.contains('verify');
-   let passVerify = user.classList.contains('verify');
+   let userVerify = user.classList.contains('verify');
+   let emailVerify = email.classList.contains('verify');
+   let passVerify = pass.classList.contains('verify');
 
-   if (emailVerify && passVerify) {
+   if (userVerify && emailVerify && passVerify) {
        const h2 = document.querySelector('.sub-title');
        h2.innerText = 'Usuário Cadastrado'
    }
